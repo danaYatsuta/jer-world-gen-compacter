@@ -13,7 +13,7 @@ for block_info in raw_data:
     block, distrib, dim = block_info["block"], block_info["distrib"], block_info["dim"]
 
     if (
-        "ore" not in block
+        "ore" not in block and block != "minecraft:ancient_debris"
         or block in processed_ores
         or block == "minecraft:spore_blossom"
     ):
