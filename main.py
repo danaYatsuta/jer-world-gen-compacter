@@ -13,7 +13,8 @@ for block_info in raw_data:
     block, distrib, dim = block_info["block"], block_info["distrib"], block_info["dim"]
 
     if (
-        "ore" not in block and block != "minecraft:ancient_debris"
+        "ore" not in block[block.index(":") + 1 :]
+        and block != "minecraft:ancient_debris"
         or block in processed_ores
         or block == "minecraft:spore_blossom"
     ):
@@ -36,7 +37,9 @@ for block_info in raw_data:
         continue
 
     distrib = [float(x[x.find(",") + 1 :]) for x in distrib.split(";")[:-1]]
-    alternate_distrib = [float(x[x.find(",") + 1 :]) for x in alternate_distrib.split(";")[:-1]]
+    alternate_distrib = [
+        float(x[x.find(",") + 1 :]) for x in alternate_distrib.split(";")[:-1]
+    ]
 
     distrib_len = len(distrib)
     alternate_distrib_len = len(alternate_distrib)
